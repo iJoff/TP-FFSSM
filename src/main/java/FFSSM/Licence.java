@@ -51,9 +51,10 @@ public class Licence {
      * @param d la date à tester
      * @return vrai si valide à la date d
      **/
+    
     public boolean estValide(LocalDate d) {
-         // TODO: Implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");
+        LocalDate dPlusUnAn = d.plusDays(365);
+        return d.isBefore(dPlusUnAn);
     }
 
 }

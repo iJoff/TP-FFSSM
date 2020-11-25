@@ -7,6 +7,10 @@ import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
+// Relier aux licences et non aux plongeurs
+// On peut retrouver son possesseur
+// Liste de licences
+
 public class Plongee {
 
 	public Site lieu;
@@ -18,6 +22,8 @@ public class Plongee {
 	public int profondeur;
 
 	public int duree;
+        
+        public HashSet<Licence> listeParticipants = new HashSet<>();
 
 	public Plongee(Site lieu, Moniteur chefDePalanquee, LocalDate date, int profondeur, int duree) {
 		this.lieu = lieu;
@@ -27,9 +33,8 @@ public class Plongee {
 		this.duree = duree;
 	}
 
-	public void ajouteParticipant(Plongeur participant) {
-		// TODO: Implémenter cette méthode
-		throw new UnsupportedOperationException("Pas encore implémenté");
+	public void ajouteParticipant(Licence licence) {
+		listeParticipants.add(licence);
 	}
 
 	public LocalDate getDate() {
@@ -42,9 +47,13 @@ public class Plongee {
 	 * licence valide à la date de la plongée
 	 * @return vrai si la plongée est conforme
 	 */
+        
 	public boolean estConforme() {
-		// TODO: Implémenter cette méthode
-		throw new UnsupportedOperationException("Pas encore implémenté");
-	}
-
+            for (Licence l : listeParticipants) {
+                if (l.estValide(date) == false) {
+                    return false;
+                }
+            }
+        return true;
+        }
 }
