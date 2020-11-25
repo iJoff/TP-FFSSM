@@ -8,7 +8,6 @@ import java.util.Set;
 
 public class Club {
 
- 
     public Moniteur president;
 
     public String nom;
