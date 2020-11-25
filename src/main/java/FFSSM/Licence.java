@@ -53,8 +53,8 @@ public class Licence {
      **/
     
     public boolean estValide(LocalDate d) {
-        LocalDate dPlusUnAn = d.plusDays(365);
-        return d.isBefore(dPlusUnAn);
+        LocalDate delivrancePlusUnAn = delivrance.plusDays(365);
+        return d.isBefore(delivrancePlusUnAn);
     }
 
 }

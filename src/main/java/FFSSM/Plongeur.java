@@ -18,4 +18,8 @@ public class Plongeur extends Personne {
         Licence licence = new Licence(this, numero, delivrance, niveau, club);
         listeLicences.add(licence);
     }
+    
+    public HashSet<Licence> licences() {
+        return listeLicences;
+    }
 }
