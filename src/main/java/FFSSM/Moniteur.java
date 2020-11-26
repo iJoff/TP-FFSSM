@@ -27,12 +27,9 @@ public class Moniteur extends Plongeur {
     
     public Optional<Club> employeurActuel() {
         Optional<Club> employeur;
+        employeur = Optional.empty();
         if (!listeEmbauches.isEmpty() && !listeEmbauches.get(listeEmbauches.size() - 1).estTerminee()) {
             Club c = listeEmbauches.get(listeEmbauches.size() - 1).getEmployeur();
-            employeur = Optional.ofNullable(c);
-        }
-        else {
-            Club c = null;
             employeur = Optional.ofNullable(c);
         }
         return employeur;
@@ -44,7 +41,7 @@ public class Moniteur extends Plongeur {
      * @param debutNouvelle la date de début de l'embauche
      */
     public void nouvelleEmbauche(Club employeur, LocalDate debutNouvelle) {   
-        if (this.employeurActuel() != null) {
+        if (this.employeurActuel().isPresent()) {
             throw new IllegalArgumentException ("L'embauche en cours doit d'abord être terminée.");
         }
         Embauche emb = new Embauche(debutNouvelle, this, employeur);
